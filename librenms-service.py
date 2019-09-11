@@ -35,7 +35,9 @@ if __name__ == '__main__':
     try:
         service = LibreNMS.Service()
     except Exception as e:
-        raise
+        if args.debug:
+            # reraise for full stack trace if debugging
+            raise
         # catch any initialization errors and print the message instead of a stack trace
         print(e)
         sys.exit(2)
